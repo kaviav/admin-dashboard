@@ -23,4 +23,15 @@
 .sidebarListItem {
   padding: 5px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+}
+.sidebarListItem.active,
+.sidebarListItem:hover {
+  background-color: rgb(239, 239, 251);
+}
+.sidebarIcon {
+  margin-right: 5px;
+  font-size: 20px !important;
 }
