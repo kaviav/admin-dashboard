@@ -10,7 +10,7 @@ export const Topbar = () => {
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <span className="logo">Kavyadmin</span>
+          <span className="logo">WhalePy</span>
         </div>
         <div className="topRight">
           <div className="topbarIconsContainer">
