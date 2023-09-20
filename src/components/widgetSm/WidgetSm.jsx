@@ -1,87 +1,45 @@
+import { useEffect, useState } from "react";
 import "./widgetSm.css";
 import { Visibility } from "@mui/icons-material";
+import { userRequest } from "../../requestMethods";
 
 export const WidgetSm = () => {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    const getAllUsers = async () => {
+      try {
+        const res = await userRequest.get("/user/getall"); // /?new=true for first few
+        setUsers(res.data);
+        // console.log(res.data);
+      } catch (err) {}
+    };
+    getAllUsers();
+  }, []);
   return (
     <div className="widgetSm">
       <span className="widgetSmTitle">Welcome memb</span>
       <ul className="widgetSmList">
-        <li className="widgetSmListItem">
-          <img
-            src="https://www.mckinsey.com/~/media/mckinsey/featured%20insights/diversity%20and%20inclusion/women%20in%20the%20workplace%202022/women%20in%20the%20workplace%202022_standard_1536x1536.jpg?mw=677&car=42:25"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUserName">Juvana Harrison</span>
-            <span className="widgetSmUserJob">Software Developer</span>
-          </div>
-          <button className="widgetSmButton">
-            <Visibility className="widgetSmIcon" />
-            Display
-          </button>
-        </li>
-
-        <li className="widgetSmListItem">
-          <img
-            src="https://www.mckinsey.com/~/media/mckinsey/featured%20insights/diversity%20and%20inclusion/women%20in%20the%20workplace%202022/women%20in%20the%20workplace%202022_standard_1536x1536.jpg?mw=677&car=42:25"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUserName">Juvana Harrison</span>
-            <span className="widgetSmUserJob">Software Developer</span>
-          </div>
-          <button className="widgetSmButton">
-            <Visibility />
-            Display
-          </button>
-        </li>
-        <li className="widgetSmListItem">
-          <img
-            src="https://www.mckinsey.com/~/media/mckinsey/featured%20insights/diversity%20and%20inclusion/women%20in%20the%20workplace%202022/women%20in%20the%20workplace%202022_standard_1536x1536.jpg?mw=677&car=42:25"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUserName">Juvana Harrison</span>
-            <span className="widgetSmUserJob">Software Developer</span>
-          </div>
-          <button className="widgetSmButton">
-            <Visibility />
-            Display
-          </button>
-        </li>
-        <li className="widgetSmListItem">
-          <img
-            src="https://www.mckinsey.com/~/media/mckinsey/featured%20insights/diversity%20and%20inclusion/women%20in%20the%20workplace%202022/women%20in%20the%20workplace%202022_standard_1536x1536.jpg?mw=677&car=42:25"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUserName">Juvana Harrison</span>
-            <span className="widgetSmUserJob">Software Developer</span>
-          </div>
-          <button className="widgetSmButton">
-            <Visibility />
-            Display
-          </button>
-        </li>
-        <li className="widgetSmListItem">
-          <img
-            src="https://www.mckinsey.com/~/media/mckinsey/featured%20insights/diversity%20and%20inclusion/women%20in%20the%20workplace%202022/women%20in%20the%20workplace%202022_standard_1536x1536.jpg?mw=677&car=42:25"
-            alt=""
-            className="widgetSmImg"
-          />
-          <div className="widgetSmUser">
-            <span className="widgetSmUserName">Juvana Harrison</span>
-            <span className="widgetSmUserJob">Software Developer</span>
-          </div>
-          <button className="widgetSmButton">
-            <Visibility />
-            Display
-          </button>
-        </li>
+        {users.map((user) => (
+          <li className="widgetSmListItem" key={user._id}>
+            <img
+              src={
+                user.image ||
+                "https://crowd-literature.eu/wp-content/uploads/2015/01/no-avatar.gif"
+              }
+              alt=""
+              className="widgetSmImg"
+            />
+            <div className="widgetSmUser">
+              <span className="widgetSmUserName"> {user.username} </span>
+              <span className="widgetSmUserJob">Software Developer</span>
+            </div>
+            <button className="widgetSmButton">
+              <Visibility className="widgetSmIcon" />
+              Display
+            </button>
+          </li>
+        ))}
       </ul>
     </div>
   );
