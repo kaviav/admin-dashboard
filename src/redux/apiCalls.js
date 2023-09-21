@@ -1,6 +1,7 @@
 import { loginStart, loginSucces, loginFailure } from "./userRedux";
 import { publicRequest } from "../requestMethods";
 import { userRequest } from "../requestMethods";
+
 import {
   addProductFailure,
   addProductStart,
@@ -15,6 +16,20 @@ import {
   updateProductStart,
   updateProductSuccess,
 } from "./productRedux";
+import {
+  addClientFailure,
+  addClientStart,
+  addClientSuccess,
+  deleteClientFailure,
+  deleteClientStart,
+  deleteClientSuccess,
+  getClientFailure,
+  getClientStart,
+  getClientSuccess,
+  updateClientFailure,
+  updateClientStart,
+  updateClientSuccess,
+} from "./clientRedux";
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
@@ -25,6 +40,12 @@ export const login = async (dispatch, user) => {
     dispatch(loginFailure());
   }
 };
+
+// export const logout = async (dispatch, user) => {
+//   dispatch(logoutUser());
+// };
+
+//PRODUCTS
 
 export const getProducts = async (dispatch) => {
   dispatch(getProductStart());
@@ -63,5 +84,47 @@ export const addProduct = async (product, dispatch) => {
     dispatch(addProductSuccess(res.data));
   } catch (err) {
     dispatch(addProductFailure());
+  }
+};
+
+//CLIENTS
+
+export const getClients = async (dispatch) => {
+  dispatch(getClientStart());
+  try {
+    const res = await userRequest.get("/user/getall");
+    dispatch(getClientSuccess(res.data));
+  } catch (err) {
+    dispatch(getClientFailure());
+  }
+};
+
+export const deleteClient = async (id, dispatch) => {
+  dispatch(deleteClientStart());
+  try {
+    const res = await userRequest.delete(`/user/delete/${id}`);
+    dispatch(deleteClientSuccess(id));
+  } catch (err) {
+    dispatch(deleteClientFailure());
+  }
+};
+
+export const updateClient = async (id, client, dispatch) => {
+  dispatch(updateClientStart());
+  try {
+    //update
+    dispatch(updateClientSuccess({ id, client })); // updateClientSuccess({id:id,client:client})
+  } catch (err) {
+    dispatch(updateClientFailure());
+  }
+};
+
+export const addClient = async (client, dispatch) => {
+  dispatch(addClientStart());
+  try {
+    const res = await userRequest.post(`/auth/signup`, client);
+    dispatch(addClientSuccess(res.data));
+  } catch (err) {
+    dispatch(addClientFailure());
   }
 };

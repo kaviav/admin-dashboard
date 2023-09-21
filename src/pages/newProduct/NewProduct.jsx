@@ -88,7 +88,8 @@ export const NewProduct = () => {
   };
   // console.log(inputs);
   // console.log(categories);
-  console.log(file);
+  // console.log(file);
+
   return (
     <div className="newProduct">
       <h1 className="addProductTitle">New Product</h1>
@@ -106,7 +107,7 @@ export const NewProduct = () => {
           <input
             name="title" // make sure name is same as in ur DB
             type="text"
-            placeholder="Apple Airpods"
+            placeholder="product title"
             onChange={handleChange}
           />
         </div>
@@ -124,7 +125,7 @@ export const NewProduct = () => {
           <input
             name="price"
             type="number"
-            placeholder="Price"
+            placeholder="price"
             onChange={handleChange}
           />
         </div>

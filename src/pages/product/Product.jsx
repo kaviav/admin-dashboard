@@ -3,12 +3,14 @@ import "./product.css";
 import { Chart } from "../../components/chart/Chart";
 // import { productData } from "../../dummyData";
 import { Publish } from "@mui/icons-material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 import { userRequest } from "../../requestMethods";
+// import { updateProduct } from "../../redux/apiCalls";
 
 export const Product = () => {
   const location = useLocation();
+  // const dispatch = useDispatch();
   const productId = location.pathname.split("/")[2];
   const [productStats, setProductStats] = useState([]);
 
@@ -48,11 +50,11 @@ export const Product = () => {
     getStats();
   }, [productId, MONTHS]);
 
-  console.log(productStats);
-
+  // console.log(productStats);
   const product = useSelector((state) =>
     state.product.products.find((product) => product._id === productId)
   );
+
   return (
     <div className="product">
       <div className="productTitleContainer">

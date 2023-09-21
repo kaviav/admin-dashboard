@@ -1,7 +1,7 @@
 import "./productList.css";
 
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { DeleteOutline } from "@mui/icons-material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,7 +20,7 @@ export const ProductList = () => {
   };
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 220 }, // redux toolkit check in tht _id, so id changed to _id
+    { field: "_id", headerName: "ID", width: 280 }, // redux toolkit check in tht _id, so id changed to _id
     {
       field: "product",
       headerName: "Product",
@@ -68,7 +68,7 @@ export const ProductList = () => {
   return (
     <div className="productList">
       <DataGrid
-        rows={products} // instead of dat products given
+        rows={products} // instead of data, products given
         disableSelectionOnClick
         columns={columns}
         getRowId={(row) => row._id} // his also added after redux integration

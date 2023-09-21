@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./user.css";
 import {
   CalendarToday,
@@ -8,8 +8,17 @@ import {
   PhoneAndroid,
   Publish,
 } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 
 export const User = () => {
+  const location = useLocation();
+  const clientId = location.pathname.split("/")[2];
+
+  const client = useSelector((state) =>
+    state.client.clients.find((client) => client._id === clientId)
+  );
+
+  console.log(client);
   return (
     <div className="user">
       <div className="userTitleContainer">
@@ -21,13 +30,9 @@ export const User = () => {
       <div className="userContainer">
         <div className="userShow">
           <div className="userShowTop">
-            <img
-              src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-              className="userShowImg"
-            />
+            <img src={client.image} alt="" className="userShowImg" />
             <div className="userShowTopTitle">
-              <span className="userShowUsername">Anna Becker</span>
+              <span className="userShowUsername">{client.username} </span>
               <span className="userShowUserTitle">Software Engineer</span>
             </div>
           </div>
@@ -35,20 +40,25 @@ export const User = () => {
             <span className="userShowTitle">Account Details</span>
             <div className="userShowInfo">
               <PermIdentity className="userShowIcon" />
-              <span className="userShowInfoTitle">annabeck99</span>
+              <span
+                className="userShowInfoTitle"
+                style={{ fontWeight: 600, color: "blue" }}
+              >
+                {clientId}{" "}
+              </span>
             </div>
             <div className="userShowInfo">
               <CalendarToday className="userShowIcon" />
-              <span className="userShowInfoTitle">10.12.1999</span>
+              <span className="userShowInfoTitle">{client.createdAt}</span>
             </div>
             <span className="userShowTitle">Contact Details</span>
-            <div className="userShowInfo">
+            {/* <div className="userShowInfo">
               <PhoneAndroid className="userShowIcon" />
               <span className="userShowInfoTitle">+1 123 456 67</span>
-            </div>
+            </div> */}
             <div className="userShowInfo">
               <MailOutline className="userShowIcon" />
-              <span className="userShowInfoTitle">annabeck99@gmail.com</span>
+              <span className="userShowInfoTitle">{client.email} </span>
             </div>
             <div className="userShowInfo">
               <LocationSearching className="userShowIcon" />
@@ -65,50 +75,46 @@ export const User = () => {
                 <label>Username</label>
                 <input
                   type="text"
-                  placeholder="annabeck99"
+                  placeholder={client.username}
                   className="userUpdateInput"
                 />
               </div>
-              <div className="userUpdateItem">
+              {/* <div className="userUpdateItem">
                 <label>Full Name</label>
                 <input
                   type="text"
                   placeholder="Anna Becker"
                   className="userUpdateInput"
                 />
-              </div>
+              </div> */}
               <div className="userUpdateItem">
                 <label>Email</label>
                 <input
                   type="text"
-                  placeholder="annabeck99@gmail.com"
+                  placeholder={client.email}
                   className="userUpdateInput"
                 />
               </div>
-              <div className="userUpdateItem">
+              {/* <div className="userUpdateItem">
                 <label>Phone</label>
                 <input
                   type="text"
                   placeholder="+1 123 456 67"
                   className="userUpdateInput"
                 />
-              </div>
-              <div className="userUpdateItem">
+              </div> */}
+              {/* <div className="userUpdateItem">
                 <label>Address</label>
                 <input
                   type="text"
                   placeholder="New York | USA"
                   className="userUpdateInput"
                 />
-              </div>
+              </div> */}
             </div>
             <div className="userUpdateRight">
               <div className="userUpdateUpload">
-                <img
-                  className="userUpdateImg"
-                  src="https://images.pexels.com/photos/1152994/pexels-photo-1152994.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                  alt=""
-                />
+                <img className="userUpdateImg" src={client.image} alt="" />
                 <label htmlFor="file">
                   <Publish className="userUpdateIcon" />
                 </label>

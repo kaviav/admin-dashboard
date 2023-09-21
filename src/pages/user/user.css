@@ -13,7 +13,7 @@
   width: 80px;
   border: none;
   padding: 5px;
-  background-color: teal;
+  background-color: rgb(23, 97, 119);
   border-radius: 5px;
   border-radius: 5px;
   cursor: pointer;
@@ -121,6 +121,7 @@
 .userUpdateUpload {
   display: flex;
   align-items: center;
+  margin-top: 30px;
 }
 
 .userUpdateImg {
@@ -143,4 +144,5 @@
   background-color: darkblue;
   color: white;
   font-weight: 600;
+  margin-top: 20px;
 }
