@@ -5,6 +5,9 @@ import { App } from "./App";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistor, store } from "./redux/store";
+import axios from "axios";
+
+axios.defaults.baseURL = "https://ecommerce-backend-0buv.onrender.com/";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
