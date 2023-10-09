@@ -5,7 +5,6 @@ import {
   LocationSearching,
   MailOutline,
   PermIdentity,
-  PhoneAndroid,
   Publish,
 } from "@mui/icons-material";
 import { useSelector } from "react-redux";

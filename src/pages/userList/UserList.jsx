@@ -10,7 +10,7 @@ import { deleteClient, getClients } from "../../redux/apiCalls";
 export const UserList = () => {
   const dispatch = useDispatch();
   const clients = useSelector((state) => state.client.clients); // check redux dev tools tree
-
+  console.log(clients);
   useEffect(() => {
     getClients(dispatch);
   }, [dispatch]);

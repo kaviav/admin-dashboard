@@ -60,7 +60,7 @@ export const getProducts = async (dispatch) => {
 export const deleteProduct = async (id, dispatch) => {
   dispatch(deleteProductStart());
   try {
-    const res = await userRequest.delete(`/product/delete/${id}`);
+    await userRequest.delete(`/product/delete/${id}`);
     dispatch(deleteProductSuccess(id));
   } catch (err) {
     dispatch(deleteProductFailure());
@@ -102,7 +102,7 @@ export const getClients = async (dispatch) => {
 export const deleteClient = async (id, dispatch) => {
   dispatch(deleteClientStart());
   try {
-    const res = await userRequest.delete(`/user/delete/${id}`);
+    await userRequest.delete(`/user/delete/${id}`);
     dispatch(deleteClientSuccess(id));
   } catch (err) {
     dispatch(deleteClientFailure());

@@ -20,9 +20,9 @@ export const App = () => {
     <div>
       <Router>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route
-            path="/*"
+            path="/home"
             element={
               admin && (
                 <>

@@ -3,7 +3,7 @@ import "./product.css";
 import { Chart } from "../../components/chart/Chart";
 // import { productData } from "../../dummyData";
 import { Publish } from "@mui/icons-material";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 import { userRequest } from "../../requestMethods";
 // import { updateProduct } from "../../redux/apiCalls";

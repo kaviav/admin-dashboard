@@ -10,7 +10,7 @@ export const FeaturedInfo = () => {
   useEffect(() => {
     const getIncome = async () => {
       try {
-        const res = await userRequest.get("order/getincome");
+        const res = await userRequest.get("/order/getincome");
         setIncome(res.data);
         setPerc((res.data[1].total * 100) / res.data[0].total - 100);
       } catch {}
