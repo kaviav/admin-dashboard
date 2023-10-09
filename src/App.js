@@ -22,7 +22,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route
-            path="/home"
+            path="/*"
             element={
               admin && (
                 <>
@@ -30,7 +30,7 @@ export const App = () => {
                   <div className="container">
                     <Sidebar />
                     <Routes>
-                      <Route index element={<Home />} />
+                      <Route path="/home" element={<Home />} />
                       <Route path="/users" element={<UserList />} />
                       <Route path="/user/:id" element={<User />} />
                       <Route path="/product/:id" element={<Product />} />
